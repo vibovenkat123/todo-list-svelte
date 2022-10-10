@@ -8,12 +8,12 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-				pages: 'public',
-				assets: 'public',
-				fallback: null,
-				precompress: false
-				}),
+			pages: 'public',
+			assets: 'public',
+			fallback: null,
+			precompress: false
+		})
 	}
-	};
+};
 
 export default config;

@@ -1,2 +1,8 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import { auth } from '../firebase';
+	import Login from '../components/Login.svelte';
+</script>
+<main class="content">
+	<h1>Todo List</h1>
+  <Login></Login>
+</main>
