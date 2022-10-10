@@ -31,23 +31,23 @@
 		rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
 	/>
-	<li>
+	<li class="todo">
 		{#if complete}
 			<span class="complete">
 				{textContent}
 			</span>
-			<button on:click={toggleStatus}>
+			<button class="button" on:click={toggleStatus}>
 				<span class="material-symbols-outlined"> close </span></button
 			>
 		{:else}
 			<span>
 				{textContent}
 			</span>
-			<button on:click={toggleStatus}>
+			<button class="button" on:click={toggleStatus}>
 				<span class="material-symbols-outlined"> done </span></button
 			>
 		{/if}
-		<button on:click={remove}>
+		<button class="button" on:click={remove}>
 			<span class="material-symbols-outlined"> delete </span>
 		</button>
 	</li>
@@ -57,5 +57,8 @@
 	.complete {
 		text-decoration: line-through;
 		color: green;
+	}
+	.todo{
+		margin-bottom: 1em;
 	}
 </style>

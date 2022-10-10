@@ -11,16 +11,32 @@
 </script>
 
 <main>
-	{#if $user}
-		<Profile name={$user.displayName} url={$user.photoURL} />
-		<button
-			on:click={() => {
-				auth.signOut();
-			}}>Sign OUt</button
-		>
+	<div class="main-todos">
+		{#if $user}
+		<div class="profile">
+			<Profile name={$user.displayName} url={$user.photoURL} />
+			<button class="button"
+				on:click={() => {
+					auth.signOut();
+				}}>Sign Out</button
+			>
+		</div>
 		<hr>
 		<Todo uid={$user.uid}/>
 	{:else}
-		<button on:click={login}>Sign In With Google</button>
+		<button on:click={login} class="button">Sign In With Google</button>
 	{/if}
+	</div>
+	
 </main>
+<style scoped>
+	.main-todos{
+		background-color: lightgray;
+		padding: 4em;
+	}
+	.profile{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+</style>

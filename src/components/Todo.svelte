@@ -5,7 +5,7 @@
   import { startWith } from "rxjs";
 	import { collection, where, query, orderBy, addDoc, doc, updateDoc, deleteDoc, getDocs} from "firebase/firestore";
   export let uid:number;
-  let text = 'Example Task'
+  let text = ''
   const queryTodo = query(collection(db, 'todos'), where('uid', '==', uid), orderBy('created'));
   const temp  = getDocs(queryTodo).then((response) => {console.log(response)})
   const todos = collectionData(queryTodo, {idField:'id'}).pipe(startWith([]));
@@ -25,17 +25,34 @@
     deleteDoc(doc(db, 'todos', id))
   }
 </script>
-<style>
-  input {display: block;}
-</style>
 <main>
-  <ul>
-    {#each $todos as todo}
-      <Item id={todo.id} textContent={todo.text} complete={todo.complete} on:remove={deleteTodo} on:toggle={update}
-      />
-      {/each}
-  </ul>
-  <input bind:value={text}>
-
-<button on:click={addTodo}>Add Task</button>
+  <div class="container">
+    <ul class="todo-list">
+      {#each $todos as todo}
+        <Item id={todo.id} textContent={todo.text} complete={todo.complete} on:remove={deleteTodo} on:toggle={update}
+        />
+        {/each}
+    </ul>
+    <div class="section-input">
+      <input class="input" bind:value={text}>
+      
+      <button class="button" on:click={addTodo}>Add Task</button>
+    </div>
+  </div>
 </main>
+<style scoped>
+  .todo-list{
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .section-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .section-input input {
+    margin-bottom: 1em;
+  }
+</style>
